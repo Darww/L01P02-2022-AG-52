@@ -1,5 +1,14 @@
+using L01P02_2022_AG_652.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<blogDbContext>(opt =>
+        opt.UseSqlServer(
+            builder.Configuration.GetConnectionString("blogDbConnection")
+            )
+        );
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
